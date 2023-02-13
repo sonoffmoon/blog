@@ -1,0 +1,58 @@
+.header nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  margin-bottom: 4.8rem;
+}
+
+.main-header {
+  font-size: 2.8rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.header a {
+  color: #333;
+  text-decoration: none;
+}
+
+.logo-icon {
+  font-size: 3.2rem;
+  display: block;
+}
+
+.contacts {
+  font-size: 2rem;
+  margin: auto 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.contacts ion-icon {
+  vertical-align: middle;
+  transition: all 0.2s;
+}
+
+.contacts ion-icon:hover {
+  transition: all 0.2s;
+  color: goldenrod;
+}
+
+.btn-create-post {
+  transition: all 0.2s;
+  background-color: blanchedalmond;
+  border-radius: 10px;
+}
+
+.btn-create-post:hover {
+  background-color: hsl(36, 100%, 85%);
+}
+
+.btn-create-post ion-icon {
+  margin: 1rem;
+  font-size: 2rem;
+  vertical-align: middle;
+}

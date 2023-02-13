@@ -1,0 +1,23 @@
+.post-preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s;
+  background-color: blanchedalmond;
+  border-radius: 10px;
+  padding: 0.5rem;
+  height: 100%;
+}
+
+.post-preview:hover {
+  background-color: hsl(36, 100%, 85%);
+}
+
+.post-preview h3 {
+  font-size: 1.8rem;
+}
+
+.post-preview p {
+  font-size: 1.2rem;
+  text-align: end;
+}
