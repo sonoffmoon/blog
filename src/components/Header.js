@@ -27,17 +27,17 @@ function Header({ auth }) {
 
           <ul class="contacts">
             <li>
-              <a class="contact-link" href="#">
+              <a class="contact-link" href="https://twitter.com/">
                 <ion-icon name="logo-twitter"></ion-icon>
               </a>
             </li>
             <li>
-              <a class="contact-link" href="#">
+              <a class="contact-link" href="https://medium.com/">
                 <ion-icon name="logo-medium"></ion-icon>
               </a>
             </li>
             <li>
-              <a class="contact-link" href="#">
+              <a class="contact-link" href="https://github.com/sonoffmoon">
                 <ion-icon name="logo-github"></ion-icon>
               </a>
             </li>
