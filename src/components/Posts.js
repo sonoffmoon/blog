@@ -29,7 +29,6 @@ const Posts = () => {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("fetch");
     const getData = async () => {
       const data = await (
         await fetch("https://sunoffmoon-blog.fly.dev/api/posts/")

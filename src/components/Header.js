@@ -4,7 +4,7 @@ import { RxMoon } from "react-icons/rx";
 
 import "../styles/Header.css";
 
-function Header({ auth }) {
+const Header =({ auth }) => {
   return (
     <>
       <header className="header">

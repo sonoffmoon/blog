@@ -10,7 +10,6 @@ const Login = ({ checkAuth }) => {
   }, [isLoggedIn]);
 
   const handleSubmit = (event) => {
-    console.log("test");
     event.preventDefault();
 
     const logInUser = async (credentials) => {
@@ -24,7 +23,6 @@ const Login = ({ checkAuth }) => {
         body: JSON.stringify(credentials),
       });
       const userObj = await user.json();
-      console.log(userObj);
 
       if (userObj.status === "success" && Boolean(userObj.token)) {
         checkAuth(setIsLoggedIn(true));
@@ -36,7 +34,7 @@ const Login = ({ checkAuth }) => {
   };
 
   return (
-    <div className="login-wrapper">
+    <main className="main">
       <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -57,7 +55,7 @@ const Login = ({ checkAuth }) => {
           <button type="submit">submit</button>
         </div>
       </form>
-    </div>
+    </main>
   );
 };
 
