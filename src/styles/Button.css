@@ -1,0 +1,50 @@
+.btn {
+  transition: all 0.2s;
+  vertical-align: middle;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  padding: 1rem;
+  background-color: hsl(36, 100%, 90%);
+  border-color: transparent;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: hsl(36, 100%, 85%);
+}
+
+.is-active {
+  transition: all 0.2s;
+  background-color: hsl(36, 93%, 82%);
+}
+
+.is-active svg {
+  transition: all 0.2s;
+  background-color: hsl(36, 93%, 82%);
+}
+
+.btn-icon {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.btn:hover {
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: hsl(36, 100%, 85%);
+}
+
+.btn-icon {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.btn-heading {
+  font-size: 1rem;
+}

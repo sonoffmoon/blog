@@ -1,8 +1,34 @@
-.header nav {
+.header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 3.2rem;
+}
+
+.wrapper {
+  display: inline-flex;
+  gap: 3rem;
+}
+
+.wrapper .email {
+  display: inline;
+}
+
+.main-header {
+  display: inline;
+}
+.header nav {
+  display: inline-flex;
+  justify-content: space-between;
   font-size: 1.2rem;
-  margin-bottom: 4.8rem;
+}
+
+.controls {
+  text-align: center;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.2rem;
 }
 
 .main-header {
@@ -42,6 +68,7 @@
 }
 
 .btn-create-post {
+  padding: 1rem;
   transition: all 0.2s;
   background-color: blanchedalmond;
   border-radius: 10px;
@@ -52,7 +79,6 @@
 }
 
 .btn-create-post ion-icon {
-  margin: 1rem;
   font-size: 2rem;
   vertical-align: middle;
 }

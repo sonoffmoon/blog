@@ -1,6 +1,13 @@
-const Button = ({ type, onClick, caption }) => {
+import "../styles/Button.css";
+
+const Button = ({ className, type, onClick, caption }) => {
+  if (!className) {
+    className = "btn";
+  } else {
+    className = "btn " + className;
+  }
   return (
-    <button className="btn" type={type} onClick={onClick}>
+    <button className={className} type={type} onClick={onClick}>
       {caption}
     </button>
   );

@@ -1,19 +1,26 @@
 import { useEffect, useState } from "react";
 
 const Login = ({ checkAuth }) => {
-  const [login, setLogin] = useState();
-  const [password, setPassword] = useState();
+  const [formData, setFormData] = useState({
+    login: "",
+    password: "",
+  });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     checkAuth(isLoggedIn);
   }, [isLoggedIn]);
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const logInUser = async (credentials) => {
-      const user = await fetch("https://sunoffmoon-blog.fly.dev/api/login/", {
+      const user = await fetch(`http://127.0.0.1:5000/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -22,15 +29,18 @@ const Login = ({ checkAuth }) => {
         credentials: "include",
         body: JSON.stringify(credentials),
       });
+      console.log(user);
       const userObj = await user.json();
+      console.log(userObj);
 
-      if (userObj.status === "success" && Boolean(userObj.token)) {
+      if (userObj.status === "success") {
         checkAuth(setIsLoggedIn(true));
+      } else {
+        console.log(userObj.message);
       }
     };
-    logInUser({ login, password });
-    setLogin(undefined);
-    setPassword(undefined);
+    console.log(JSON.stringify(formData));
+    logInUser(formData);
   };
 
   return (
@@ -39,17 +49,11 @@ const Login = ({ checkAuth }) => {
       <form onSubmit={handleSubmit}>
         <label>
           <p>login</p>
-          <input
-            type="text"
-            onChange={(event) => setLogin(event.target.value)}
-          />
+          <input name="login" type="text" onChange={handleChange} />
         </label>
         <label>
           <p>pass</p>
-          <input
-            type="password"
-            onChange={(event) => setPassword(event.target.value)}
-          />
+          <input name="password" type="password" onChange={handleChange} />
         </label>
         <div>
           <button type="submit">submit</button>

@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 
 import { ColorRing } from "react-loader-spinner";
 
-import { Link } from "react-router-dom";
-
 import "../styles/Posts.css";
 import "../styles/Post-preview.css";
+import PostService from "../services/PostService";
+import { Context } from "..";
 
 const PostPreview = ({ createdAt, id, topic, content }) => {
   const date =
@@ -25,14 +26,16 @@ const PostPreview = ({ createdAt, id, topic, content }) => {
 };
 
 const Posts = () => {
+  const { store } = useContext(Context);
+  store.isEditing = false;
+  store.editingId = undefined;
+  store.postContent = {};
   const [posts, setPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
-      const data = await (
-        await fetch("https://sunoffmoon-blog.fly.dev/api/posts/")
-      ).json();
+      const data = await PostService.getAllPosts();
       setLoading(false);
       setPosts(data);
     };
