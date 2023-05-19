@@ -35,29 +35,34 @@ export default class Store {
       this.setUser(response.data.user);
       return response.data.user;
     } catch (err) {
-      console.log(err.response?.data?.message);
+      return { error: err.response.data };
     }
   }
 
-  async registration(email, password) {
+  async registration(email, password, repeatPassword) {
     try {
-      const response = await AuthService.registration(email, password);
+      const response = await AuthService.registration(
+        email,
+        password,
+        repeatPassword
+      );
       localStorage.setItem("token", response.data.accessToken);
       this.setAuth(true);
       this.setUser(response.data.user);
+      return response;
     } catch (err) {
-      console.log(err.response?.data?.message);
+      return { error: err.response.data };
     }
   }
 
   async logout() {
     try {
-      const response = await AuthService.logout();
+      await AuthService.logout();
       localStorage.removeItem("token");
       this.setAuth(false);
       this.setUser({});
     } catch (err) {
-      console.log(err.response?.data?.message);
+      return { error: err.response.data };
     }
   }
 

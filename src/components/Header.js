@@ -32,7 +32,7 @@ const Header = () => {
 
             {store.isAuth ? (
               <Link to="/new">
-                <div class="btn-create-post">
+                <div className="btn-create-post">
                   <ion-icon name="add-outline"></ion-icon>
                 </div>
               </Link>
@@ -63,19 +63,22 @@ const Header = () => {
           </div>
 
           <nav>
-            <ul class="contacts">
+            <ul className="contacts">
               <li>
-                <a class="contact-link" href="https://twitter.com/">
+                <a className="contact-link" href="https://twitter.com/">
                   <ion-icon name="logo-twitter"></ion-icon>
                 </a>
               </li>
               <li>
-                <a class="contact-link" href="https://medium.com/">
+                <a className="contact-link" href="https://medium.com/">
                   <ion-icon name="logo-medium"></ion-icon>
                 </a>
               </li>
               <li>
-                <a class="contact-link" href="https://github.com/sonoffmoon">
+                <a
+                  className="contact-link"
+                  href="https://github.com/sonoffmoon"
+                >
                   <ion-icon name="logo-github"></ion-icon>
                 </a>
               </li>

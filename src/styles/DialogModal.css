@@ -1,7 +1,7 @@
 .modal {
   font-size: 1.8rem;
 
-  padding: 1rem 2rem;
+  padding: 2rem 3rem;
   background-color: hsl(28, 100%, 95%);
   border: none;
   width: 50rem;
@@ -15,7 +15,34 @@
   backdrop-filter: blur(1px);
 }
 
+.form-title {
+  margin-bottom: 1.5rem;
+}
+
 .form-wrapper {
+  margin-top: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.field p {
+  margin-bottom: 0.5rem;
+}
+
+input {
+  padding: 0.5rem;
+  background-color: hsl(28, 100%, 90%);
+  font-size: 1.8rem;
+  border: 1px solid hsl(28, 100%, 85%);
+  border-radius: 5px;
+}
+
+input:focus-visible {
+  outline: hsl(28, 100%, 85%) solid 2px;
 }
 
 .modal-controls {
@@ -25,9 +52,16 @@
 }
 
 .btn-close {
-  background-color: hsl(0, 100%, 75%);
+  background-color: hsl(0, 100%, 80%);
 }
 
 .btn-close:hover {
-  background-color: hsl(0, 100%, 65%);
+  background-color: hsl(0, 100%, 75%);
+}
+
+.error-message {
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: hsl(0, 100%, 80%);
 }

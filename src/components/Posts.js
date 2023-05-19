@@ -17,7 +17,7 @@ const PostPreview = ({ createdAt, id, topic, content }) => {
     createdAt.substring(0, 4);
   return (
     <Link to={`/posts/${id}`} content={content}>
-      <article class="post-preview">
+      <article className="post-preview">
         <h3>{topic}</h3>
         <p>{date}</p>
       </article>
@@ -63,9 +63,9 @@ const Posts = () => {
       <main className="main">
         <section className="posts">
           {posts.map((post) => {
-            // console.log(post);
             return (
               <PostPreview
+                key={post._id}
                 id={post._id}
                 topic={post.topic}
                 content={post.content}
