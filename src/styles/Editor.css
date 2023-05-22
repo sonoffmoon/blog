@@ -2,7 +2,7 @@
   margin-top: 2rem;
   padding: 1rem 2rem;
   border-radius: 10px;
-  background-color: hsl(36, 100%, 95%);
+  background-color: var(--editor-bg-color);
   margin-bottom: 2rem;
 }
 
@@ -31,13 +31,13 @@
 
 .ProseMirror code {
   display: inline-block;
-  background-color: hsl(36, 93%, 82%);
-  padding: 0 0.2rem;
+  background-color: var(--editor-code-color);
+  padding: 0 1rem;
   border-radius: 5px;
 }
 
 .ProseMirror pre {
-  background: blanchedalmond;
+  background: var(--editor-pre-color);
   font-size: 1.6rem;
   margin-bottom: 1rem;
   padding: 1.2rem 2.4rem 1.2rem 2.4rem;
@@ -101,7 +101,7 @@
 .editor-menu {
   border-radius: 10px;
   padding: 0.5rem 1rem;
-  background-color: hsla(37, 100%, 95%, 0.486);
+  background-color: var(--editor-menu);
   backdrop-filter: blur(5px);
   position: sticky;
   top: 0px;

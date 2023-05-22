@@ -8,19 +8,19 @@
   align-items: center;
   font-size: 1.8rem;
   padding: 1rem;
-  background-color: hsl(36, 100%, 85%);
+  background-color: var(--btn-bg-color);
   border-color: transparent;
   border-radius: 10px;
 }
 
 .is-active {
   transition: all 0.2s;
-  background-color: hsl(36, 93%, 82%);
+  background-color: var(--btn-bg-color-active);
 }
 
 .is-active svg {
   transition: all 0.2s;
-  background-color: hsl(36, 93%, 82%);
+  background-color: var(--btn-bg-color-active);
 }
 
 .btn-icon {
@@ -31,7 +31,7 @@
 .btn:hover {
   cursor: pointer;
   transition: all 0.2s;
-  background-color: hsl(36, 100%, 80%);
+  background-color: var(--btn-bg-color-hover);
 }
 
 .btn-icon {

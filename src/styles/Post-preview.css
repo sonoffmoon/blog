@@ -3,14 +3,14 @@
   flex-direction: column;
   justify-content: space-between;
   transition: all 0.2s;
-  background-color: blanchedalmond;
+  background-color: var(--post-preview-bg-color);
   border-radius: 10px;
   padding: 0.5rem;
   height: 100%;
 }
 
 .post-preview:hover {
-  background-color: hsl(36, 100%, 85%);
+  background-color: var(--post-preview-bg-color-hover);
 }
 
 .post-preview h3 {

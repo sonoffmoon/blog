@@ -26,21 +26,23 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const currentTheme = localStorage.getItem("theme");
+
+    if (currentTheme) {
+      document.body.setAttribute("data-theme", currentTheme);
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.body.setAttribute("data-theme", "dark");
+    } else {
+      document.body.setAttribute("data-theme", "light");
+    }
+  }, []);
+
   if (store.isLoading) {
-    return <h1>LOADING</h1>;
+    return "";
   }
 
-  // if (!store.isAuth) {
-  //   return <LogInForm />;
-  // }
-
   return (
-    // <div>
-    //   <h1>
-    //     {store.isAuth ? `Logged in: ${store.user.email}` : "Please authorize"}
-    //   </h1>
-    //   <button onClick={() => store.logout()}>Log out</button>
-    // </div>
     <>
       <Routes>
         <Route element={<Header />}>

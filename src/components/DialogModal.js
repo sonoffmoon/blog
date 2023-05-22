@@ -63,24 +63,24 @@ const DialogModal = ({ title, isOpened, onProceed, onClose, children }) => {
 
         <div className="form-wrapper">
           <form onSubmit={handleSubmit}>
-            <label className="field">
+            <label className="field" htmlFor="email">
               <p>Email</p>
-              <input
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
             </label>
-            <label className="field">
+            <input
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <label className="field" htmlFor="password">
               <p>Password</p>
-              <input
-                name="password"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
-              />
             </label>
+            <input
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
             <div className="modal-controls">
               <Button type="submit" onClick={onProceed} caption={"Proceed"} />
               <Button

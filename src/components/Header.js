@@ -15,8 +15,18 @@ const Header = () => {
   const [isLogInOpened, setIsLogInOpened] = useState(false);
   const [isSignUpOpened, setIsSignUpOpened] = useState(false);
 
-  const onProceed = () => {};
+  const changeTheme = () => {
+    if (document.body.dataset.theme === "dark") {
+      document.body.dataset.theme = "light";
+      localStorage.setItem("theme", "light");
+    } else {
+      document.body.dataset.theme = "dark";
+      localStorage.setItem("theme", "dark");
+    }
+  };
 
+  console.log(document.body.dataset);
+  const onProceed = () => {};
   return (
     <>
       <header className="header">
@@ -60,6 +70,11 @@ const Header = () => {
                 />
               </>
             )}
+            <Button
+              type={"button"}
+              onClick={() => changeTheme()}
+              caption={"Theme"}
+            />
           </div>
 
           <nav>

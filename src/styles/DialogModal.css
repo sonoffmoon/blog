@@ -2,7 +2,7 @@
   font-size: 1.8rem;
 
   padding: 2rem 3rem;
-  background-color: hsl(28, 100%, 95%);
+  background-color: var(--modal-bg-color);
   border: none;
   width: 50rem;
   border-radius: 10px;
@@ -35,14 +35,14 @@ form {
 
 input {
   padding: 0.5rem;
-  background-color: hsl(28, 100%, 90%);
+  background-color: var(--modal-input-color);
   font-size: 1.8rem;
-  border: 1px solid hsl(28, 100%, 85%);
+  border: 1px solid var(--modal-input-border-color);
   border-radius: 5px;
 }
 
 input:focus-visible {
-  outline: hsl(28, 100%, 85%) solid 2px;
+  outline: var(--modal-input-color-focus) solid 2px;
 }
 
 .modal-controls {
@@ -52,16 +52,16 @@ input:focus-visible {
 }
 
 .btn-close {
-  background-color: hsl(0, 100%, 80%);
+  background-color: var(--modal-btn-cls-color);
 }
 
 .btn-close:hover {
-  background-color: hsl(0, 100%, 75%);
+  background-color: var(--modal-btn-cls-color-hover);
 }
 
 .error-message {
   font-size: 1.6rem;
   padding: 0.5rem;
   border-radius: 5px;
-  background-color: hsl(0, 100%, 80%);
+  background-color: var(--modal-error-msg);
 }

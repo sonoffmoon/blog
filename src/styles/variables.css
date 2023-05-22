@@ -1,0 +1,55 @@
+:root {
+  --bg-color: hsl(60, 100%, 98%);
+  --text-color: #333;
+
+  --post-preview-bg-color: hsl(36, 100%, 90%);
+  --post-preview-bg-color-hover: hsl(36, 100%, 85%);
+
+  --btn-bg-color: hsl(36, 100%, 85%);
+  --btn-bg-color-hover: hsl(36, 100%, 80%);
+  --btn-bg-color-active: hsl(36, 93%, 82%);
+
+  --btn-create-post: hsl(36, 100%, 90%);
+
+  --modal-bg-color: hsl(28, 100%, 95%);
+  --modal-btn-color: #666;
+  --modal-input-color: #444;
+  --modal-input-color-focus: hsl(207, 11%, 80%);
+  --modal-input-border-color: hsl(210, 5%, 57%);
+  --modal-btn-cls-color: hsl(0, 100%, 70%);
+  --modal-btn-cls-color-hover: hsl(0, 100%, 65%);
+  --modal-error-msg: hsl(0, 100%, 70%);
+
+  --editor-bg-color: hsl(36, 100%, 95%);
+  --editor-menu: hsla(37, 100%, 95%, 0.486);
+  --editor-code-color: hsl(36, 93%, 82%);
+  --editor-pre-color: blanchedalmond;
+}
+[data-theme="dark"] {
+  --bg-color: #333;
+  --text-color: hsl(208, 100%, 97%);
+
+  --post-preview-bg-color: #555;
+  --post-preview-bg-color-hover: #666;
+
+  --btn-bg-color: #555;
+  --btn-bg-color-hover: #666;
+  --btn-bg-color-active: #777;
+
+  --btn-create-post: hsl(43, 74%, 49%);
+  --btn-create-post-hover: hsl(43, 90%, 49%);
+
+  --modal-bg-color: #444;
+  --modal-btn-color: #666;
+  --modal-input-color: #444;
+  --modal-input-color-focus: hsl(207, 11%, 80%);
+  --modal-input-border-color: hsl(210, 5%, 57%);
+  --modal-btn-cls-color: hsl(0, 100%, 70%);
+  --modal-btn-cls-color-hover: hsl(0, 100%, 65%);
+  --modal-error-msg: hsl(0, 100%, 70%);
+
+  --editor-bg-color: #444;
+  --editor-menu: hsla(0, 0%, 27%, 0.521);
+  --editor-code-color: #222;
+  --editor-pre-color: #555;
+}

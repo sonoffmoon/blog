@@ -68,14 +68,15 @@
 }
 
 .btn-create-post {
+  font-size: 1.8rem;
   padding: 1rem;
   transition: all 0.2s;
-  background-color: blanchedalmond;
+  background-color: var(--btn-create-post);
   border-radius: 10px;
 }
 
 .btn-create-post:hover {
-  background-color: hsl(36, 100%, 85%);
+  background-color: var(--btn-create-post-hover);
 }
 
 .btn-create-post ion-icon {

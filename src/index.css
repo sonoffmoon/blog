@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #333;
+  color: var(--text-color);
 }
 
 html {
@@ -11,7 +11,7 @@ html {
 
 body {
   height: 100vh;
-  background-color: rgb(255, 255, 243);
+  background-color: var(--bg-color);
   font-family: "Merriweather", serif;
   padding: 5vh 3vh;
 }
