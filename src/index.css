@@ -13,7 +13,7 @@ body {
   height: 100vh;
   background-color: var(--bg-color);
   font-family: "Merriweather", serif;
-  padding: 5vh 3vh;
+  /* padding: 5vh 3vh; */
 }
 
 #root {

@@ -2,9 +2,10 @@ import { useState, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
-import DialogModal from "./DialogModal";
+import DialogModal from "./SingIn";
 import SignUp from "./SignUp";
 import Button from "./Button";
+import SignIn from "./SingIn";
 
 import { RxMoon } from "react-icons/rx";
 
@@ -12,8 +13,24 @@ import "../styles/Header.css";
 
 const Header = () => {
   const { store } = useContext(Context);
-  const [isLogInOpened, setIsLogInOpened] = useState(false);
-  const [isSignUpOpened, setIsSignUpOpened] = useState(false);
+  const [isSignInOpen, setIsSignInOpen] = useState(false);
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+
+  const openSignIn = () => {
+    setIsSignInOpen(true);
+  };
+
+  const closeSignIn = () => {
+    setIsSignInOpen(false);
+  };
+
+  const openSignUp = () => {
+    setIsSignUpOpen(true);
+  };
+
+  const closeSignUp = () => {
+    setIsSignUpOpen(false);
+  };
 
   const changeTheme = () => {
     if (document.body.dataset.theme === "dark") {
@@ -25,15 +42,13 @@ const Header = () => {
     }
   };
 
-  console.log(document.body.dataset);
-  const onProceed = () => {};
   return (
     <>
       <header className="header">
         <Link to="/">
           <h1 className="main-header">
             <RxMoon height={"48"} width={"48"} className={"logo-icon"} />
-            moon son's blog
+            <span>moon son's blog</span>
           </h1>
         </Link>
         <div className="wrapper">
@@ -60,12 +75,12 @@ const Header = () => {
               <>
                 <Button
                   type={"button"}
-                  onClick={() => setIsLogInOpened(true)}
+                  onClick={openSignIn}
                   caption={"Log in"}
                 />
                 <Button
                   type={"button"}
-                  onClick={() => setIsSignUpOpened(true)}
+                  onClick={openSignUp}
                   caption={"Sign up"}
                 />
               </>
@@ -76,48 +91,10 @@ const Header = () => {
               caption={"Theme"}
             />
           </div>
-
-          <nav>
-            <ul className="contacts">
-              <li>
-                <a className="contact-link" href="https://twitter.com/">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                </a>
-              </li>
-              <li>
-                <a className="contact-link" href="https://medium.com/">
-                  <ion-icon name="logo-medium"></ion-icon>
-                </a>
-              </li>
-              <li>
-                <a
-                  className="contact-link"
-                  href="https://github.com/sonoffmoon"
-                >
-                  <ion-icon name="logo-github"></ion-icon>
-                </a>
-              </li>
-            </ul>
-          </nav>
         </div>
 
-        <DialogModal
-          title="Log In"
-          isOpened={isLogInOpened}
-          onProceed={onProceed}
-          onClose={() => setIsLogInOpened(false)}
-        >
-          <p>To close: click Close, press Escape, or click outside.</p>
-        </DialogModal>
-
-        <SignUp
-          title="Sign up"
-          isOpened={isSignUpOpened}
-          onProceed={onProceed}
-          onClose={() => setIsSignUpOpened(false)}
-        >
-          <p>To close: click Close, press Escape, or click outside.</p>
-        </SignUp>
+        {isSignInOpen && <SignIn closeModal={closeSignIn} />}
+        {isSignUpOpen && <SignUp closeModal={closeSignUp} />}
       </header>
       <Outlet />
     </>

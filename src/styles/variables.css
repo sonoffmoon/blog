@@ -10,12 +10,13 @@
   --btn-bg-color-active: hsl(36, 93%, 82%);
 
   --btn-create-post: hsl(36, 100%, 90%);
+  --btn-create-post-hover: hsl(36, 100%, 85%);
 
   --modal-bg-color: hsl(28, 100%, 95%);
-  --modal-btn-color: #666;
-  --modal-input-color: #444;
-  --modal-input-color-focus: hsl(207, 11%, 80%);
-  --modal-input-border-color: hsl(210, 5%, 57%);
+  --modal-btn-color: hsl(36, 100%, 80%);
+  --modal-input-color: hsl(36, 93%, 90%);
+  --modal-input-color-focus: hsl(36, 100%, 80%);
+  --modal-input-border-color: hsl(36, 93%, 82%);
   --modal-btn-cls-color: hsl(0, 100%, 70%);
   --modal-btn-cls-color-hover: hsl(0, 100%, 65%);
   --modal-error-msg: hsl(0, 100%, 70%);

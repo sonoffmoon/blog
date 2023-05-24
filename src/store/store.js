@@ -35,6 +35,9 @@ export default class Store {
       this.setUser(response.data.user);
       return response.data.user;
     } catch (err) {
+      if (!err.response) {
+        return { error: "Server is not responding" };
+      }
       return { error: err.response.data };
     }
   }

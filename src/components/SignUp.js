@@ -3,7 +3,7 @@ import Button from "./Button";
 import "../styles/DialogModal.css";
 import { Context } from "..";
 
-const SignUp = ({ title, isOpened, onProceed, onClose, children }) => {
+const SignUp = ({ closeModal }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -13,17 +13,6 @@ const SignUp = ({ title, isOpened, onProceed, onClose, children }) => {
   const [error, setError] = useState(false);
 
   const { store } = useContext(Context);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    if (isOpened) {
-      ref.current.showModal();
-      document.body.classList.toggle("modal-open");
-    } else {
-      ref.current.close();
-      document.body.classList.toggle("modal-open");
-    }
-  }, [isOpened]);
 
   const signUpUser = async (credentials) => {
     const { email, password, repeatPassword } = credentials;
@@ -38,12 +27,13 @@ const SignUp = ({ title, isOpened, onProceed, onClose, children }) => {
         password: "",
       });
       setError(false);
-      onClose();
+      closeModal();
     }
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(name, value);
     setFormData({ ...formData, [name]: value });
   };
 
@@ -52,58 +42,78 @@ const SignUp = ({ title, isOpened, onProceed, onClose, children }) => {
     signUpUser(formData);
   };
 
-  const preventAutoClose = (e) => e.stopPropagation();
+  const handleModalClick = (event) => {
+    if (event.target.classList.contains("modal-background")) {
+      closeModal();
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.keyCode === 27) {
+      closeModal();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
-    <dialog className="modal" ref={ref} onCancel={onClose} onClick={onClose}>
-      <div onClick={preventAutoClose}>
-        <h3>{title}</h3>
-        {children}
-
-        {error ? <p className="error-message">{error}</p> : ""}
-
+    <div className="modal-background" onClick={handleModalClick}>
+      <div className="modal">
         <div className="form-wrapper">
+          <h2 className="form-title">Log In</h2>
+
+          {error ? <p className="error-message">{error}</p> : ""}
+
           <form onSubmit={handleSubmit}>
-            <label>
+            <label className="field" htmlFor="email">
               <p>Email</p>
-              <input
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
             </label>
-            <label>
+            <input
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <label className="field" htmlFor="password">
               <p>Password</p>
-              <input
-                name="password"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
-              />
             </label>
-            <label>
+            <input
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <label className="field" htmlFor="repeatPassword">
               <p>Repeat password</p>
-              <input
-                name="repeatPassword"
-                type="password"
-                value={formData.repeatPassword}
-                onChange={handleChange}
-              />
             </label>
+            <input
+              name="repeatPassword"
+              type="password"
+              value={formData.repeatPassword}
+              onChange={handleChange}
+            />
             <div className="modal-controls">
-              <Button type="submit" onClick={onProceed} caption={"Proceed"} />
+              <Button
+                type="submit"
+                onClick={console.log("click3")}
+                caption={"Proceed"}
+              />
               <Button
                 className={"btn-close"}
                 type="button"
-                onClick={onClose}
+                onClick={closeModal}
                 caption={"Close"}
               />
             </div>
           </form>
         </div>
       </div>
-    </dialog>
+    </div>
   );
 };
 
