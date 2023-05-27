@@ -1,3 +1,35 @@
+.editor-menu {
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  background-color: var(--editor-menu);
+  backdrop-filter: blur(5px);
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+
+  display: flex;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+}
+
+.editor-control {
+  flex-grow: 1;
+
+  height: 3rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--btn-bg-color);
+  transition: all 0.3s;
+}
+
+.editor-control:hover {
+  background-color: var(--btn-bg-color-hover);
+}
+
+.ProseMirror-focused {
+  outline: none;
+}
+
 .ProseMirror {
   margin-top: 2rem;
   padding: 1rem 2rem;
@@ -6,9 +38,6 @@
   margin-bottom: 2rem;
 }
 
-.ProseMirror-focused {
-  outline: none;
-}
 .ProseMirror h2 {
   font-size: 3.6rem;
   margin-bottom: 3.2rem;
@@ -47,6 +76,7 @@
 .ProseMirror pre code {
   white-space: pre-wrap;
   background-color: transparent;
+  word-break: break-all;
 }
 
 .ProseMirror img {
@@ -98,62 +128,6 @@
   padding: 1rem 1.5rem 1rem 2.5rem;
 }
 
-.editor-menu {
-  border-radius: 10px;
-  padding: 0.5rem 1rem;
-  background-color: var(--editor-menu);
-  backdrop-filter: blur(5px);
-  position: sticky;
-  top: 0px;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
-  grid-gap: 1rem;
-}
-
 .btn-heading {
   font-size: 1rem;
-}
-
-@media (max-width: 1200px) {
-  #root {
-    padding: 0 0.5rem;
-  }
-  .ProseMirror img {
-    max-width: 60rem;
-  }
-}
-
-@media (max-width: 85rem) {
-  .ProseMirror img {
-    max-width: 90%;
-  }
-}
-
-@media (max-width: 700px) {
-  .btn {
-    font-size: 1.2rem;
-  }
-
-  .header {
-    padding: 1rem;
-  }
-
-  .editor-menu {
-    grid-gap: 0.2rem;
-  }
-
-  .btn {
-    /* font-size: 1rem; */
-    padding: 0;
-  }
-
-  .btn-icon {
-    width: 3rem;
-    height: 3rem;
-  }
-
-  .header span {
-    display: none;
-  }
 }

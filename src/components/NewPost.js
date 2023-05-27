@@ -33,6 +33,8 @@ const NewPost = () => {
     } else {
       await PostService.newPost(topic, author, JSON.stringify(dataObj));
     }
+
+    navigate("/");
   };
 
   return (

@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
-import DialogModal from "./SingIn";
 import SignUp from "./SignUp";
 import Button from "./Button";
 import SignIn from "./SingIn";
@@ -69,14 +68,14 @@ const Header = () => {
               <Button
                 type={"button"}
                 onClick={() => store.logout()}
-                caption={"Log out"}
+                caption={"Logout"}
               />
             ) : (
               <>
                 <Button
                   type={"button"}
                   onClick={openSignIn}
-                  caption={"Log in"}
+                  caption={"Login"}
                 />
                 <Button
                   type={"button"}

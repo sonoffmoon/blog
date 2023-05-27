@@ -6,6 +6,7 @@ import Store from "./store/store";
 import { BrowserRouter } from "react-router-dom";
 import "./styles/variables.css";
 import "./index.css";
+import "./styles/media-queries.css";
 
 const store = new Store();
 

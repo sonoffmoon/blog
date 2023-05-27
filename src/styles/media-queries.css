@@ -1,0 +1,86 @@
+@media (max-width: 1200px) {
+  #root {
+    padding: 0 0.5rem;
+  }
+  .ProseMirror img {
+    max-width: 60rem;
+  }
+}
+
+@media (max-width: 85rem) {
+  .ProseMirror img {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 700px) {
+  .controls {
+    gap: 0.5rem;
+  }
+  .btn {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+  }
+
+  .btn-create-post {
+    padding: 0.5rem;
+  }
+
+  .header {
+    padding: 1rem;
+  }
+
+  .editor-menu {
+    /* display: grid; */
+    padding: 0;
+    gap: 0.3rem;
+    /* grid-gap: 0.2rem; */
+    /* grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr)); */
+  }
+  .editor-control {
+    padding: 0;
+  }
+
+  .editor-control ion-icon {
+    font-size: 1.2rem;
+  }
+
+  .btn-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .header {
+    padding: 1rem 0;
+  }
+
+  .header span {
+    display: none;
+  }
+
+  .posts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .ProseMirror h2 {
+    font-size: 2.4rem;
+  }
+
+  .ProseMirror h3 {
+    font-size: 1.8rem;
+  }
+
+  .ProseMirror p {
+    font-size: 1.4rem;
+  }
+
+  .ProseMirror code {
+    font-size: 1.4rem;
+  }
+
+  .ProseMirror pre {
+    padding: 0.8rem 1.2rem;
+  }
+}
