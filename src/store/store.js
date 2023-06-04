@@ -10,6 +10,7 @@ export default class Store {
   isEditing = false;
   editingId = undefined;
   postContent = {};
+  postTopic = {};
 
   constructor() {
     makeAutoObservable(this);

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect } from "react";
+import React, { createContext, useContext, useEffect, Fragment } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "./index";
 import { Routes, Route } from "react-router-dom";
@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 
 import Posts from "./components/Posts";
 import NewPost from "./components/NewPost";
+import Profile from "./components/Profile";
 
 import "./App.css";
 
@@ -45,7 +46,14 @@ const App = () => {
         <Route element={<Header />}>
           <Route index path="/" element={<Posts />} />
           <Route path={"/posts/:id"} element={<Post />} />
-          {store.isAuth ? <Route path="/new" element={<NewPost />} /> : ""}
+          <Route path="/users/:id" element={<Profile />} />
+          {store.isAuth ? (
+            <Fragment>
+              <Route path="/new" element={<NewPost />} />
+            </Fragment>
+          ) : (
+            ""
+          )}
         </Route>
       </Routes>
       <Footer />

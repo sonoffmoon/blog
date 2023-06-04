@@ -42,9 +42,7 @@ const SignIn = ({ closeModal }) => {
 
   const logInUser = async (credentials) => {
     const { email, password } = credentials;
-    console.log(email, password);
     const user = await store.login(email, password);
-    console.log(user);
     if (user.error) {
       const regex = /<pre>(.*?)<\/pre>/s;
       const matches = user.error.match(regex);
@@ -78,6 +76,7 @@ const SignIn = ({ closeModal }) => {
               type="email"
               value={formData.email}
               onChange={handleChange}
+              autoFocus={true}
             />
             <label className="field" htmlFor="password">
               <p>Password</p>
@@ -89,11 +88,7 @@ const SignIn = ({ closeModal }) => {
               onChange={handleChange}
             />
             <div className="modal-controls">
-              <Button
-                type="submit"
-                onClick={console.log("click3")}
-                caption={"Proceed"}
-              />
+              <Button type="submit" caption={"Proceed"} />
               <Button
                 className={"btn-close"}
                 type="button"

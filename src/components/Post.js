@@ -13,6 +13,7 @@ import { ColorRing } from "react-loader-spinner";
 import "../styles/Editor.css";
 import PostService from "../services/PostService";
 import Button from "./Button";
+// import Popup from "./Popup";
 import { Context } from "..";
 
 const Post = () => {
@@ -20,6 +21,7 @@ const Post = () => {
   const params = useParams();
   const [post, setPost] = useState({});
   const [isLoading, setLoading] = useState(true);
+  // const [showPopup, setShowPopup] = useState(false);
 
   const navigate = useNavigate();
 
@@ -32,13 +34,33 @@ const Post = () => {
     getData();
   }, []);
 
-  const editPost = (postContent) => {
-    store.postContent = JSON.parse(postContent);
+  const editPost = (post) => {
+    store.postTopic = JSON.parse(post.topic);
+    store.postContent = JSON.parse(post.content);
     store.isEditing = true;
     store.editingId = params.id;
-    delete store.postContent.topic;
 
     navigate("/new");
+  };
+
+  const deletePost = async () => {
+    const { id } = params;
+    const result = await PostService.deletePost(id);
+
+    if (result.status == 200) {
+      navigate("/");
+    }
+  };
+
+  const formatDate = () => {
+    const date =
+      post.createdAt.substring(8, 10) +
+      "/" +
+      post.createdAt.substring(5, 7) +
+      "/" +
+      post.createdAt.substring(0, 4);
+
+    return date;
   };
 
   if (isLoading) {
@@ -62,15 +84,32 @@ const Post = () => {
       <main className="main">
         <section className="post ProseMirror">
           {store.user.email === post.author ? (
-            <Button
-              classname={"edit"}
-              type={"button"}
-              onClick={() => editPost(post.content)}
-              caption={"Edit post"}
-            />
+            <div className="post-controls">
+              <Button
+                classname={"edit"}
+                type={"button"}
+                onClick={() => editPost(post)}
+                caption={"Edit post"}
+              />
+              <Button
+                classname={"edit"}
+                type={"button"}
+                onClick={deletePost}
+                caption={"Delete post"}
+              />
+            </div>
           ) : (
             ""
           )}
+          <div className="header-wrapper">
+            <h2 className="post-heading">
+              {parse(generateHTML(JSON.parse(post.topic), [StarterKit]))}
+            </h2>
+            <a className="user-link" href={`/users/${post.authorId}`}>
+              {post.author}
+            </a>
+            <time className="post-created-at">{formatDate()}</time>
+          </div>
           {parse(
             generateHTML(JSON.parse(post.content), [
               StarterKit,

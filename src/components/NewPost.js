@@ -15,26 +15,41 @@ import { Underline } from "@tiptap/extension-underline";
 const NewPost = () => {
   const { store } = useContext(Context);
   const navigate = useNavigate();
+
   const createPost = async (isEditing) => {
-    const html = document.querySelector(".ProseMirror").innerHTML;
+    let html = document.querySelector(".ProseMirror").innerHTML;
     const regex = /<h2>(.*?)<\/h2>/;
-    const topic = regex.exec(html)[1];
+    let topic = regex.exec(html)[1];
+    html = html.replace(/<h2>[^<]*<\/h2>/, "");
+
     const dataObj = generateJSON(html, [StarterKit, Image, Link, Underline]);
 
-    dataObj.topic = topic;
+    topic = generateJSON(topic, [StarterKit]);
+
     const author = store.user.email;
+    const authorId = store.user.id;
+
     if (isEditing) {
-      await PostService.editPost(
+      const editedPost = await PostService.editPost(
         store.editingId,
-        topic,
+        JSON.stringify(topic),
         author,
+        authorId,
         JSON.stringify(dataObj)
       );
-    } else {
-      await PostService.newPost(topic, author, JSON.stringify(dataObj));
-    }
 
-    navigate("/");
+      if (editedPost) {
+        navigate("/");
+      }
+    } else {
+      await PostService.newPost(
+        JSON.stringify(topic),
+        author,
+        authorId,
+        JSON.stringify(dataObj)
+      );
+      navigate("/");
+    }
   };
 
   return (

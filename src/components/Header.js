@@ -9,6 +9,7 @@ import SignIn from "./SingIn";
 import { RxMoon } from "react-icons/rx";
 
 import "../styles/Header.css";
+import { API_URL } from "../http";
 
 const Header = () => {
   const { store } = useContext(Context);
@@ -52,7 +53,13 @@ const Header = () => {
         </Link>
         <div className="wrapper">
           <div className="controls">
-            {store.isAuth ? <p className="email">{store.user.email}</p> : ""}
+            {store.isAuth ? (
+              <Link to={`/users/${store.user.id}`}>
+                <p className="email">{store.user.email}</p>
+              </Link>
+            ) : (
+              ""
+            )}
 
             {store.isAuth ? (
               <Link to="/new">

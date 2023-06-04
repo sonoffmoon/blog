@@ -1,46 +1,58 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-
+import { Context } from "..";
 import { ColorRing } from "react-loader-spinner";
+import PostService from "../services/PostService";
+import PostPreview from "./PostPreview";
+import Button from "./Button";
 
 import "../styles/Posts.css";
-import "../styles/Post-preview.css";
-import PostService from "../services/PostService";
-import { Context } from "..";
-
-const PostPreview = ({ createdAt, id, topic, content }) => {
-  const date =
-    createdAt.substring(8, 10) +
-    "/" +
-    createdAt.substring(5, 7) +
-    "/" +
-    createdAt.substring(0, 4);
-  return (
-    <Link to={`/posts/${id}`} content={content}>
-      <article className="post-preview">
-        <h3>{topic}</h3>
-        <p>{date}</p>
-      </article>
-    </Link>
-  );
-};
 
 const Posts = () => {
   const { store } = useContext(Context);
   store.isEditing = false;
   store.editingId = undefined;
   store.postContent = {};
-  const [posts, setPosts] = useState([]);
+  store.postTopic = {};
+  const [allPosts, setAllPosts] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [nextPageExists, setNextPageExists] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
-      const data = await PostService.getAllPosts();
+      const data = await PostService.getAllPosts(null, page);
       setLoading(false);
-      setPosts(data);
+      setAllPosts((prevPosts) => {
+        const uniquePosts = [...prevPosts];
+        data.forEach((post) => {
+          if (!uniquePosts.some((p) => p._id === post._id)) {
+            uniquePosts.push(post);
+          }
+        });
+        return uniquePosts;
+      });
     };
     getData();
-  }, []);
+  }, [page]);
+
+  const nextPage = async () => {
+    const nextPageData = await PostService.getAllPosts(null, page + 1);
+    if (!nextPageData.length) {
+      setNextPageExists(false);
+      return;
+    }
+    setNextPageExists(true);
+    setAllPosts((prevPosts) => {
+      const uniquePosts = [...prevPosts];
+      nextPageData.forEach((post) => {
+        if (!uniquePosts.some((p) => p._id === post._id)) {
+          uniquePosts.push(post);
+        }
+      });
+      return uniquePosts;
+    });
+    setPage(page + 1);
+  };
 
   if (isLoading) {
     return (
@@ -62,7 +74,7 @@ const Posts = () => {
     return (
       <main className="main">
         <section className="posts">
-          {posts.map((post) => {
+          {allPosts.map((post) => {
             return (
               <PostPreview
                 key={post._id}
@@ -73,6 +85,20 @@ const Posts = () => {
               />
             );
           })}
+          {allPosts.length >= 18 ? (
+            nextPageExists ? (
+              <Button
+                className="btn"
+                type="button"
+                onClick={nextPage}
+                caption="Load more"
+              />
+            ) : (
+              <span className="thats-all">That's all!</span>
+            )
+          ) : (
+            ""
+          )}
         </section>
       </main>
     );

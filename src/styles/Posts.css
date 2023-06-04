@@ -8,3 +8,12 @@
 .posts a {
   text-decoration: none;
 }
+
+.thats-all {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--post-preview-bg-color);
+  border-radius: 5px;
+}

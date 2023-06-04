@@ -33,7 +33,6 @@ const SignUp = ({ closeModal }) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
     setFormData({ ...formData, [name]: value });
   };
 
@@ -78,6 +77,7 @@ const SignUp = ({ closeModal }) => {
               type="email"
               value={formData.email}
               onChange={handleChange}
+              autoFocus={true}
             />
             <label className="field" htmlFor="password">
               <p>Password</p>

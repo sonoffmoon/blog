@@ -25,6 +25,9 @@
   --editor-menu: hsla(37, 100%, 95%, 0.486);
   --editor-code-color: hsl(36, 93%, 82%);
   --editor-pre-color: blanchedalmond;
+
+  --link-color: hsl(36, 74%, 40%);
+  --link-color-hover: hsl(36, 74%, 45%);
 }
 [data-theme="dark"] {
   --bg-color: #333;
@@ -53,4 +56,7 @@
   --editor-menu: hsla(0, 0%, 27%, 0.521);
   --editor-code-color: #222;
   --editor-pre-color: #555;
+
+  --link-color: hsl(36, 100%, 70%);
+  --link-color-hover: hsl(36, 100%, 75%);
 }

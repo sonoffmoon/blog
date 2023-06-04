@@ -114,9 +114,6 @@ const MenuBar = ({ editor }) => {
       >
         <AiOutlineCode className="btn-icon" />
       </button>
-      {/* <button onClick={() => editor.chain().focus().clearNodes().run()}>
-        clear nodes
-      </button> */}
       <button
         title="Paragraph"
         onClick={() => editor.chain().focus().setParagraph().run()}
@@ -128,12 +125,6 @@ const MenuBar = ({ editor }) => {
       >
         <BsParagraph className="btn-icon" />
       </button>
-      {/* <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        className={editor.isActive("heading", { level: 1 }) ? "is-active" : ""}
-      >
-        h1
-      </button> */}
       <button
         title="Heading"
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
@@ -219,9 +210,6 @@ const MenuBar = ({ editor }) => {
       >
         <BsBlockquoteLeft className="btn-icon" />
       </button>
-      {/* <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
-        horizontal rule
-      </button> */}
       <button
         title="Hard break"
         className="editor-control"
@@ -260,7 +248,13 @@ export default ({ content }) => {
   const editor = useEditor({
     extensions: [StarterKit, Image, Link, Underline],
     content: store.isEditing
-      ? generateHTML(store.postContent, [StarterKit, Image, Link, Underline])
+      ? `<h2>${generateHTML(store.postTopic, [StarterKit])}</h2>
+        ${generateHTML(store.postContent, [
+          StarterKit,
+          Image,
+          Link,
+          Underline,
+        ])}`
       : `
     <h2>
     Hi there,
