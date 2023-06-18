@@ -11,8 +11,6 @@ import Posts from "./components/Posts";
 import NewPost from "./components/NewPost";
 import Profile from "./components/Profile";
 
-import "./App.css";
-
 export const PostsContext = createContext([]);
 
 const App = () => {

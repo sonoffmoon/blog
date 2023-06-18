@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import axios from "axios";
-import { API_URL } from "../http";
+import { API_URL } from "../http/http";
 import AuthService from "../services/AuthService";
 
 export default class Store {

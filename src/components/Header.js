@@ -9,7 +9,7 @@ import SignIn from "./SingIn";
 import { RxMoon } from "react-icons/rx";
 
 import "../styles/Header.css";
-import { API_URL } from "../http";
+import { API_URL } from "../http/http";
 
 const Header = () => {
   const { store } = useContext(Context);

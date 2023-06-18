@@ -1,6 +1,6 @@
 import axios from "axios";
-import { API_URL } from "../http";
-import api from "../http";
+import { API_URL } from "../http/http";
+import api from "../http/http";
 
 export default class PostService {
   static async getAllPosts(author, page) {
